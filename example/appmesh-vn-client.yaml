@@ -1,0 +1,81 @@
+apiVersion: appmesh.k8s.aws/v1beta2
+kind: VirtualNode
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"appmesh.k8s.aws/v1beta2","kind":"VirtualNode","metadata":{"annotations":{},"name":"goclient","namespace":"default"},"spec":{"backends":[{"virtualService":{"virtualServiceRef":{"name":"httpbin-vs.default.svc.cluster.local"}}}],"listeners":[{"portMapping":{"port":8888,"protocol":"http"}}],"podSelector":{"matchLabels":{"app":"goclient"}},"serviceDiscovery":{"dns":{"hostname":"goclient.default.svc.cluster.local"}}}}
+  creationTimestamp: "2020-11-19T04:14:56Z"
+  finalizers:
+  - finalizers.appmesh.k8s.aws/aws-appmesh-resources
+  generation: 3
+  managedFields:
+  - apiVersion: appmesh.k8s.aws/v1beta2
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+      f:spec:
+        .: {}
+        f:backends: {}
+        f:listeners: {}
+        f:podSelector:
+          .: {}
+          f:matchLabels:
+            .: {}
+            f:app: {}
+        f:serviceDiscovery:
+          .: {}
+          f:dns:
+            .: {}
+            f:hostname: {}
+    manager: kubectl
+    operation: Update
+    time: "2020-11-19T08:04:27Z"
+  - apiVersion: appmesh.k8s.aws/v1beta2
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:finalizers:
+          .: {}
+          v:"finalizers.appmesh.k8s.aws/aws-appmesh-resources": {}
+      f:status:
+        .: {}
+        f:conditions: {}
+        f:observedGeneration: {}
+        f:virtualNodeARN: {}
+    manager: controller
+    operation: Update
+    time: "2020-11-19T08:15:24Z"
+  name: goclient
+  namespace: default
+  resourceVersion: "7072721"
+  selfLink: /apis/appmesh.k8s.aws/v1beta2/namespaces/default/virtualnodes/goclient
+  uid: 3d8c49e2-bb4f-4f50-90f0-25f13342e7a6
+spec:
+  awsName: goclient_default
+  backends:
+  - virtualService:
+      virtualServiceRef:
+        name: httpbin-vs.default.svc.cluster.local
+  listeners:
+  - portMapping:
+      port: 8888
+      protocol: http
+  meshRef:
+    name: mymesh
+    uid: 40f9c639-8a5c-42c8-8772-bc51b213271d
+  podSelector:
+    matchLabels:
+      app: goclient
+  serviceDiscovery:
+    dns:
+      hostname: goclient.default.svc.cluster.local
+status:
+  conditions:
+  - lastTransitionTime: "2020-11-19T04:17:33Z"
+    status: "True"
+    type: VirtualNodeActive
+  observedGeneration: 3
+  virtualNodeARN: arn:aws:appmesh:ap-northeast-1:054818973631:mesh/mymesh/virtualNode/goclient_default

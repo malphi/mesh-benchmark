@@ -1,0 +1,67 @@
+apiVersion: appmesh.k8s.aws/v1beta2
+kind: VirtualService
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"appmesh.k8s.aws/v1beta2","kind":"VirtualService","metadata":{"annotations":{},"name":"httpbin-vs.default.svc.cluster.local","namespace":"default"},"spec":{"awsName":"httpbin-vs.default.svc.cluster.local","provider":{"virtualRouter":{"virtualRouterRef":{"name":"httpbin-router"}}}}}
+  creationTimestamp: "2020-11-19T08:13:43Z"
+  finalizers:
+  - finalizers.appmesh.k8s.aws/aws-appmesh-resources
+  generation: 1
+  managedFields:
+  - apiVersion: appmesh.k8s.aws/v1beta2
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:finalizers:
+          .: {}
+          v:"finalizers.appmesh.k8s.aws/aws-appmesh-resources": {}
+      f:status:
+        .: {}
+        f:conditions: {}
+        f:observedGeneration: {}
+        f:virtualServiceARN: {}
+    manager: controller
+    operation: Update
+    time: "2020-11-19T08:13:43Z"
+  - apiVersion: appmesh.k8s.aws/v1beta2
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+      f:spec:
+        .: {}
+        f:awsName: {}
+        f:provider:
+          .: {}
+          f:virtualRouter:
+            .: {}
+            f:virtualRouterRef:
+              .: {}
+              f:name: {}
+    manager: kubectl
+    operation: Update
+    time: "2020-11-19T08:13:43Z"
+  name: httpbin-vs.default.svc.cluster.local
+  namespace: default
+  resourceVersion: "7072304"
+  selfLink: /apis/appmesh.k8s.aws/v1beta2/namespaces/default/virtualservices/httpbin-vs.default.svc.cluster.local
+  uid: 6fb466b1-36af-42c8-9daa-f9738de17261
+spec:
+  awsName: httpbin-vs.default.svc.cluster.local
+  meshRef:
+    name: mymesh
+    uid: 40f9c639-8a5c-42c8-8772-bc51b213271d
+  provider:
+    virtualRouter:
+      virtualRouterRef:
+        name: httpbin-router
+status:
+  conditions:
+  - lastTransitionTime: "2020-11-19T08:13:43Z"
+    status: "True"
+    type: VirtualServiceActive
+  observedGeneration: 1
+  virtualServiceARN: arn:aws:appmesh:ap-northeast-1:054818973631:mesh/mymesh/virtualService/httpbin-vs.default.svc.cluster.local

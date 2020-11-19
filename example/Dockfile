@@ -1,0 +1,6 @@
+FROM alpine:3.5
+RUN mkdir /client
+COPY ./bin /client/bin
+WORKDIR /client
+EXPOSE 8888
+CMD ["bin/main"]
