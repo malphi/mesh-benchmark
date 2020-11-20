@@ -28,6 +28,6 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	http.HandleFunc("/byte/", handler)
-	fmt.Println("start...")
+	fmt.Println("started...")
 	log.Fatal(http.ListenAndServe(":8888", nil))
 }

@@ -1,0 +1,80 @@
+apiVersion: appmesh.k8s.aws/v1beta2
+kind: VirtualNode
+metadata:
+  name: goclient
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      app: goclient
+  listeners:
+    - portMapping:
+        port: 8888
+        protocol: http
+  backends:
+    - virtualService:
+        virtualServiceRef:
+          name: httpbin-vs.default.svc.cluster.local
+  serviceDiscovery:
+    dns:
+      hostname: goclient.default.svc.cluster.local
+---
+apiVersion: appmesh.k8s.aws/v1beta2
+kind: VirtualNode
+metadata:
+  name: httpbin
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      app: httpbin
+  listeners:
+    - portMapping:
+        port: 8000
+        protocol: http
+  serviceDiscovery:
+    dns:
+      hostname: httpbin.default.svc.cluster.local
+---
+apiVersion: appmesh.k8s.aws/v1beta2
+kind: VirtualService
+metadata:
+  name: httpbin-vs.default.svc.cluster.local
+  namespace: default
+spec:
+  awsName: httpbin-vs.default.svc.cluster.local
+  provider:
+    virtualRouter:
+      virtualRouterRef:
+        name: httpbin-router
+---
+apiVersion: appmesh.k8s.aws/v1beta2
+kind: VirtualRouter
+metadata:
+  namespace: default
+  name: httpbin-router
+spec:
+  listeners:
+    - portMapping:
+        port: 8000
+        protocol: http
+  routes:
+    - name: httpRoute
+      httpRoute:
+        match:
+          prefix: /
+        action:
+          weightedTargets:
+            - virtualNodeRef:
+                name: httpbin
+              weight: 100
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: httpbin-vs
+  namespace: default
+spec:
+  ports:
+  - name: http
+    port: 8000
