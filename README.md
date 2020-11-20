@@ -69,14 +69,18 @@ For big data volumes, the timeout count is almost the same.
 
 - Transfer data volumes is 100 Bytes: App Mesh's costs (both cpu & mem) is better than Istio's
 
+  Istio:
   ![byte100istio](imgs/byte100istio.png)
-
+  
+  App Mesh:
   ![byte100am](imgs/byte100-am-2.png)
 
 - Transfer data volumes is 1 MB: App Mesh's mem cost is better than Istio's; The cpu costs the same as baseline.
-
+  
+  Istio:
   ![byte1mistio](imgs/byte1m-istio.png)
 
+  App Mesh:
   ![byte1mam](imgs/byte1m-am-2.png)
 
 #### Namespace cost
