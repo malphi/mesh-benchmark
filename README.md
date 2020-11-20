@@ -20,6 +20,7 @@
   - Istio
     - v1.7.0
     - Envoy: docker.io/istio/proxyv2:1.7.0
+  - AWS CloudWatch
   
 - Application
 
@@ -71,7 +72,7 @@ For big data volumes, the timeout count is almost the same.
 
   Istio:
   ![byte100istio](imgs/byte100istio.png)
-  
+
   App Mesh:
   ![byte100am](imgs/byte100-am-2.png)
 
