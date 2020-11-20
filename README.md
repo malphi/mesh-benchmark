@@ -48,21 +48,21 @@
 
 #### Latency
 
-- In the small data volumes, App Mesh is a little bit better than Istio.
-- In the big data volumes, they are almost the same as baseline.
+- For a few data volumes, App Mesh is a little bit better than Istio.
+- For the large data volumes, they are almost the same as baseline.
 
 ![latency](imgs/latency.png)
 
 #### Throughput
 
-- In the small data volumes, App Mesh is a little bit better than Istio.
-- In the big data volumes, they are almost the same.
+- For a few data volumes, App Mesh is a little bit better than Istio.
+- For the large data volumes, they are almost the same.
 
 ![throughput](imgs/throughput.png)
 
 #### Timeout
 
-For big data volumes, the timeout count is almost the same.
+For large data volumes, the timeout count is almost the same.
 
 ![timeout](imgs/timeout.png)
 
